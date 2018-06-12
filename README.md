@@ -160,7 +160,7 @@ IMPORTANT NOTES:
    making regular backups of this folder is ideal.
 ```
 
-### staging
+### Staging
 
 Once the dry-run perfomed without errors, it's time to staging procedure.
 
@@ -200,7 +200,7 @@ IMPORTANT NOTES:
 
 ```
 
-### For real
+### Complete verification
 
 Finally, to perform the full check.
 
