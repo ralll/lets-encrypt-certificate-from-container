@@ -104,13 +104,13 @@ The command lines options explanation:
 * **--webroot and --webroot-path:** certbot configurations.
 * **--agree-tos:** License agreement.
 * **--dry-run:** For tests. Just check the configurations. Don't download certificates.
-* **--staging:** For tests. Test configurations and download not valid certificates.
+* **--staging:** For tests. Test configurations and download **non-valid** certificates.
 * **-m:** email address from responsible for domain.
 * **-d:** the domain address URL.
 
 ### Dry-run
 
-Fist it's recommended to run a dry-run procedure.
+It's recommended to run a dry-run procedure first.
 
 It will test the configurations, but it won't download any certificates.
 
@@ -202,11 +202,13 @@ IMPORTANT NOTES:
 
 ### Complete verification
 
-Finally, to perform the full check.
+Finally, the time has come for the full check.
 
 It will download the oficial certificate to the letsencrypt volume (attached to web_server container).
 
-Be sure before trying for real to avoid to be blocked by the Let's Encrypt service. First run dry-run and staging modes before this step.
+Be sure before trying for real to avoid to be blocked by the Let's Encrypt service for excessive requests.
+
+Pass through dry-run and staging modes before this step.
 
 ```bash
 docker run -it --rm \
@@ -267,12 +269,13 @@ docker run -it --rm \
 **Obs:**
 
 The existing certificate is the **non-valid** certificate created in the step 02.
-If you prefer, it is possible to remove the volume (`docker volume rm source_letsencrypt`) and rerun the web_server service and the certbot container.
+
+If you prefer, it is possible to remove the volume (`docker volume rm source_letsencrypt`) and rerun the web_server service (compose file) and the certbot container.
 
 
 ## Step 03: Retry the certificate.
 
-If the certbot container runs without errors, the certificates will be available in the letsencrypt volume.
+If the certbot container runs without errors, the certificates will be available in the letsencrypt volume attached to web_server container.
 
 Copy the certificate to developer machine or to other server.
 
@@ -310,5 +313,7 @@ or
 ```
 docker-machine scp -r server_name:/var/lib/docker/volumes/source_letsencrypt/_data another_server_name:/some-path/letsencrypt/
 
+0000_csr-certbot.pem          100%  936     4.6KB/s   00:00    
+0001_csr-certbot.pem          100%  936     4.6KB/s   00:00  
 [...]
 ```
