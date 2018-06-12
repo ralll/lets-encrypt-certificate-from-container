@@ -16,13 +16,13 @@ For developers with difficult to obtain the Let's Encrypt certificate due to var
 
 **obs:** These procedures were tested in a Digital Ocean droplet.
 
-## Step 0: Change the configurations to right web address.
+## Step 0: Change the configurations to the desired web address.
 
-* To change the file "nginx.conf", line 12, "__DOMAIN_ADDRESS__" to domain address URL.
+* Change the file **nginx.conf**, line 12, **DOMAIN_ADDRESS** to domain address URL.
 
-* To change the email and URL when to run the certbot container:
- * **-m user@exemplo.com \** to **-m your-email@com**.
- * **-d test.com** to **-d some-address.com**.
+* Put your email and domain address URL when to run the certbot container:
+ * **-m user@exemplo.com**.
+ * **-d test.com**.
 
 * Connect to the server with docker-machine.
 
