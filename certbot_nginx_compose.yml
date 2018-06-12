@@ -1,0 +1,16 @@
+version: '3.3'
+
+services:
+  web:
+    image: web_server
+    container_name: web_server
+    volumes:
+      # Let's encrypt configuration
+      - letsencrypt:/etc/letsencrypt
+      - acme-challenge:/tmp/letsencrypt/www
+    ports:
+        - 80:80
+        - 443:443
+volumes:
+  letsencrypt:
+  acme-challenge:
